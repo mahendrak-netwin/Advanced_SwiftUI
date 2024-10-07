@@ -1,0 +1,58 @@
+
+View Modifiers -
+take the view content add something to it and modify the view
+
+
+custom modifier -
+1. like stacking the bunch of regular modifiers to create a custom modifier
+2. it increases the reusability of the code 
+
+hum humara khud ka custom view modifier bhi bana sakte hai  - 
+1. without parameters 
+2. with parameters
+
+
+import SwiftUI
+
+struct Custom_Modifier : ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.headline)
+            .frame(width: 255, height: 55)
+            .background(Color.blue)
+            .cornerRadius(20)
+            .padding()
+    }
+}
+
+struct Custom_Modifier_With_Parameters: ViewModifier {
+    
+    let bgColor: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.headline)
+            .frame(width: 255, height: 55)
+            .background(bgColor)
+            .cornerRadius(20)
+            .padding()
+    }
+}
+
+
+struct ContentView: View {
+    var body: some View {
+        Text("ye hai custom modifier")
+            .modifier(Custom_Modifier())
+        
+        Text("ye hai custom modifier")
+            .modifier(Custom_Modifier_With_Parameters(bgColor: .red ))
+    }
+}
+
+#Preview {
+    ContentView()
+}
+
+
+
