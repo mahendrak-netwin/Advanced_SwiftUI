@@ -1,6 +1,41 @@
 We can create the custom shapes using
 1. custom shape with straight line
+
+import SwiftUI
+
+struct Triangle : Shape{
+     func path(in rect: CGRect) -> Path {
+         Path{ path in
+             path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+             path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+             path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+             path.addLine(to:CGPoint(x: rect.midX, y: rect.minY))
+         }
+    }
+}
+
+struct Custom_Shapes: View {
+    var body: some View {
+            
+        ZStack {
+            
+            Triangle()
+                .frame(width: 300, height: 200)
+        }
+           
+    }
+}
+
+#Preview {
+    Custom_Shapes()
+}
+
+=====================================================================================
 2. custom shape with curves 
+
+
+
+
 3. custom shape with curves and animations
 
 
